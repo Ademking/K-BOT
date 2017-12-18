@@ -682,7 +682,7 @@
 	<div id="sidepanel">
 		<div id="profile">
 			<div class="wrap">
-				<img id="profile-img" src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/512/user-male-icon.png" class="online" alt="" />
+				<img id="profile-img" src="bot.png" class="online" alt="" />
 				<p>K-BOT</p>
 
 
@@ -697,7 +697,7 @@
 	</div>
 	<div class="content">
 		<div class="contact-profile">
-			<img src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/512/user-male-icon.png" alt="" />
+			<img src="bot.png" alt="" />
 			<p>K-BOT</p>
 			<div class="social-media">
 				<i class="fa fa-facebook" aria-hidden="true"></i>
@@ -707,12 +707,12 @@
 			<ul>
 
 				<li class="replies">
-					<img src="http://uploads.webflow.com/565d5a0cdee07e0131e751d2/565d5a0d6555090131ce1561_botan_logo.png" alt="" />
+					<img src="bot.png" alt="" />
 					<p>Ahlan Bik ^^ Ena K-BOT ... <br> Najm Net3alm Ay 7aja ... <i class="em em-smile"></i> </p>
 				</li>
 
 				<li class="replies">
-					<img src="http://uploads.webflow.com/565d5a0cdee07e0131e751d2/565d5a0d6555090131ce1561_botan_logo.png" alt="" />
+					<img src="bot.png" alt="" />
 					<p>Jarb Ektb Ay Message</p>
 				</li>
 
@@ -767,7 +767,7 @@ function newMessage() {
 	if($.trim(message) == '') {
 		return false;
 	}
-	$('<li class="sent"><img src="https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/HsTZSDw4avx.gif" alt="" /><p>' + emojify(message) + '</p></li>').appendTo($('.messages ul'));
+	$('<li class="sent"><img src="userbot.png" alt="" /><p>' + emojify(message) + '</p></li>').appendTo($('.messages ul'));
 	$('.message-input input').val(null);
 	$('.contact.active .preview').html('<span>You: </span>' + message);
 	scrolldown();
@@ -791,7 +791,7 @@ $(window).on('keydown', function(e) {
 	if($.trim(message) == '') {
 		return false;
 	}
-	$('<li class="sent"><img src="https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/HsTZSDw4avx.gif" alt="" /><p>' + emojify(message) + '</p></li>').appendTo($('.messages ul'));
+	$('<li class="sent"><img src="userbot.png" alt="" /><p>' + emojify(message) + '</p></li>').appendTo($('.messages ul'));
 	$('.message-input input').val(null);
 	$('.contact.active .preview').html('<span>You: </span>' + message);
 	scrolldown();
@@ -801,13 +801,13 @@ $(window).on('keydown', function(e) {
 	console.log(data);
 	if (  typeof data.redirect_to_blocks === 'undefined') { //bot understand 
 			var bot_respond = data.messages[0].text;
-			$('<li class="replies"><img src="http://uploads.webflow.com/565d5a0cdee07e0131e751d2/565d5a0d6555090131ce1561_botan_logo.png" alt="" /><p>' + emojify(bot_respond) + '</p></li>').appendTo($('.messages ul'));
+			$('<li class="replies"><img src="bot.png" alt="" /><p>' + emojify(bot_respond) + '</p></li>').appendTo($('.messages ul'));
 			scrolldown();
 	}
 	else {
 		//bot don't understand ..
 		console.log("I don't understand");
-			$('<li class="replies"><img src="http://uploads.webflow.com/565d5a0cdee07e0131e751d2/565d5a0d6555090131ce1561_botan_logo.png" alt="" /><p>' + 'Ma Fhmtkch ... Kif T9oli ' + emojify(message) + ' ....<br> Ena Chouwa Yelzmni N9oul ?' + '</p></li>').appendTo($('.messages ul'));
+			$('<li class="replies"><img src="userbot.png" alt="" /><p>' + 'Ma Fhmtkch ... Kif T9oli ' + emojify(message) + ' ....<br> Ena Chouwa Yelzmni N9oul ?' + '</p></li>').appendTo($('.messages ul'));
 			$("#text_input").addClass("to_understand");	
 			$("#storage").attr('info' , message);
 			scrolldown();
@@ -842,8 +842,8 @@ $(window).on('keydown', function(e) {
 				message2 = $(".message-input input").val();
 			 var jqxhr2 = $.getJSON( "https://facetounsi.fun/chatbot/learn.php?text=" + $("#storage").attr("info")  + "&means=" + message2 , function( data ) {
 									
-								$('<li class="sent"><img src="https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/HsTZSDw4avx.gif" alt="" /><p>' +  emojify(message2)  + '</p></li>').appendTo($('.messages ul'));
-								$('<li class="replies"><img src="http://uploads.webflow.com/565d5a0cdee07e0131e751d2/565d5a0d6555090131ce1561_botan_logo.png" alt="" /><p>' + 'Ok Fhmtk ... ' + emojify($("#storage").attr("info")) + ' M3neha ' +  emojify(message2)  + '</p></li>').appendTo($('.messages ul'));
+								$('<li class="sent"><img src="userbot.png" alt="" /><p>' +  emojify(message2)  + '</p></li>').appendTo($('.messages ul'));
+								$('<li class="replies"><img src="bot.png" alt="" /><p>' + 'Ok Fhmtk ... ' + emojify($("#storage").attr("info")) + ' M3neha ' +  emojify(message2)  + '</p></li>').appendTo($('.messages ul'));
 								scrolldown();
 
 								$("#text_input").removeClass("to_understand");	
