@@ -707,12 +707,12 @@
 			<ul>
 
 				<li class="replies">
-					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+					<img src="http://uploads.webflow.com/565d5a0cdee07e0131e751d2/565d5a0d6555090131ce1561_botan_logo.png" alt="" />
 					<p>Ahlan Bik ^^ Ena K-BOT ... <br> Najm Net3alm Ay 7aja ... <i class="em em-smile"></i> </p>
 				</li>
 
 				<li class="replies">
-					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+					<img src="http://uploads.webflow.com/565d5a0cdee07e0131e751d2/565d5a0d6555090131ce1561_botan_logo.png" alt="" />
 					<p>Jarb Ektb Ay Message</p>
 				</li>
 
@@ -767,7 +767,7 @@ function newMessage() {
 	if($.trim(message) == '') {
 		return false;
 	}
-	$('<li class="sent"><img src="http://emilcarlsson.se/assets/mikeross.png" alt="" /><p>' + emojify(message) + '</p></li>').appendTo($('.messages ul'));
+	$('<li class="sent"><img src="https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/HsTZSDw4avx.gif" alt="" /><p>' + emojify(message) + '</p></li>').appendTo($('.messages ul'));
 	$('.message-input input').val(null);
 	$('.contact.active .preview').html('<span>You: </span>' + message);
 	scrolldown();
@@ -791,7 +791,7 @@ $(window).on('keydown', function(e) {
 	if($.trim(message) == '') {
 		return false;
 	}
-	$('<li class="sent"><img src="http://emilcarlsson.se/assets/mikeross.png" alt="" /><p>' + emojify(message) + '</p></li>').appendTo($('.messages ul'));
+	$('<li class="sent"><img src="https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/HsTZSDw4avx.gif" alt="" /><p>' + emojify(message) + '</p></li>').appendTo($('.messages ul'));
 	$('.message-input input').val(null);
 	$('.contact.active .preview').html('<span>You: </span>' + message);
 	scrolldown();
@@ -842,7 +842,7 @@ $(window).on('keydown', function(e) {
 				message2 = $(".message-input input").val();
 			 var jqxhr2 = $.getJSON( "https://facetounsi.fun/chatbot/learn.php?text=" + $("#storage").attr("info")  + "&means=" + message2 , function( data ) {
 									
-								$('<li class="sent"><img src="http://uploads.webflow.com/565d5a0cdee07e0131e751d2/565d5a0d6555090131ce1561_botan_logo.png" alt="" /><p>' +  emojify(message2)  + '</p></li>').appendTo($('.messages ul'));
+								$('<li class="sent"><img src="https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/HsTZSDw4avx.gif" alt="" /><p>' +  emojify(message2)  + '</p></li>').appendTo($('.messages ul'));
 								$('<li class="replies"><img src="http://uploads.webflow.com/565d5a0cdee07e0131e751d2/565d5a0d6555090131ce1561_botan_logo.png" alt="" /><p>' + 'Ok Fhmtk ... ' + emojify($("#storage").attr("info")) + ' M3neha ' +  emojify(message2)  + '</p></li>').appendTo($('.messages ul'));
 								scrolldown();
 
