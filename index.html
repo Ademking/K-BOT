@@ -17,7 +17,7 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #27ae60;
+  background: #1883b9;
   font-family: "proxima-nova", "Source Sans Pro", sans-serif;
   font-size: 1em;
   letter-spacing: 0.1px;
@@ -692,9 +692,24 @@
 				<p>K-BOT</p>
 
 
-			</div>
+			</div>	
 		</div>
-
+		<div id="contacts" class="hidden-sm hidden-xs">
+				<center>
+				<br><br>
+					<img class="online" width="40%" src="http://www.clker.com/cliparts/0/2/f/a/1194984956763217035attenzione_architetto_fr_01.svg.hi.png"/>
+					<br><br>
+					<h4 style="font-size: 29px;"> Please Read This </h4>
+					<br>
+					<p>K-BOT learns from people <br> things it says may seem inappropriate <br> use with discretion and at YOUR OWN RISK</p>
+					<br><br>
+					<p> Version 1.0 </p>
+					<br>
+					<p> Created By Adem KOUKI</p>
+					<br>
+					<p> 2017 - 2018 </p>
+				</center>
+		</div>
 
 		<!--<div id="bottom-bar">
 			<button id="addcontact"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> <span>Contact The Dev</span></button>
@@ -769,6 +784,11 @@ $(".messages").animate({ scrollTop: 100000 }, "fast");
 
 
 function newMessage() {
+
+
+  if ($("#text_input").hasClass("to_understand") === false) {
+	
+	
 	message = $(".message-input input").val();
 	if($.trim(message) == '') {
 		return false;
@@ -777,6 +797,90 @@ function newMessage() {
 	$('.message-input input').val(null);
 	$('.contact.active .preview').html('<span>You: </span>' + message);
 	scrolldown();
+	
+	
+	var jqxhr = $.getJSON( "https://facetounsi.fun/chatbot/respond.php?text=" + message, function( data ) {
+	console.log(data);
+	if (  typeof data.redirect_to_blocks === 'undefined') { //bot understand 
+			var bot_respond = data.messages[0].text;
+			$('<li class="replies"><img src="bot.png" alt="" /><p>' + emojify(bot_respond) + '</p></li>').appendTo($('.messages ul'));
+			scrolldown();
+	}
+	else {
+		//bot don't understand ..
+		console.log("I don't understand");
+			$('<li class="replies"><img src="userbot.png" alt="" /><p>' + 'Ma Fhmtkch ... Kif T9oli ' + emojify(message) + ' ....<br> Ena Chouwa Yelzmni N9oul ?' + '</p></li>').appendTo($('.messages ul'));
+			$("#text_input").addClass("to_understand");	
+			$("#storage").attr('info' , message);
+			scrolldown();
+	}
+
+	
+	
+})
+  .done(function() {
+    console.log( "second success" );
+  })
+  .fail(function() {
+    console.log( "error" );
+  });
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+    return false;
+  }
+  
+ if ($("#text_input").hasClass("to_understand") === true) {
+				message2 = $(".message-input input").val();
+			 var jqxhr2 = $.getJSON( "https://facetounsi.fun/chatbot/learn.php?text=" + $("#storage").attr("info")  + "&means=" + message2 , function( data ) {
+									
+								$('<li class="sent"><img src="userbot.png" alt="" /><p>' +  emojify(message2)  + '</p></li>').appendTo($('.messages ul'));
+								$('<li class="replies"><img src="bot.png" alt="" /><p>' + 'Ok Fhmtk ... ' + emojify($("#storage").attr("info")) + ' M3neha ' +  emojify(message2)  + '</p></li>').appendTo($('.messages ul'));
+								scrolldown();
+
+								$("#text_input").removeClass("to_understand");	
+								$("#storage").attr("info" , "");
+								$('.message-input input').val(null);
+								
+				
+				
+			})
+			  .done(function() {
+				console.log( "second success" );
+			  })
+			  .fail(function() {
+				console.log( "error" );
+			  });
+				
+			
+				
+				return false;
+			 
+
+ 
+ } 
+  
+
+
+
+
+
+
+
+
+
+
+
 };
 
 $('.submit').click(function() {
@@ -813,7 +917,7 @@ $(window).on('keydown', function(e) {
 	else {
 		//bot don't understand ..
 		console.log("I don't understand");
-			$('<li class="replies"><img src="userbot.png" alt="" /><p>' + 'Ma Fhmtkch ... Kif T9oli ' + emojify(message) + ' ....<br> Ena Chouwa Yelzmni N9oul ?' + '</p></li>').appendTo($('.messages ul'));
+			$('<li class="replies"><img src="bot.png" alt="" /><p>' + 'Ma Fhmtkch ... Kif T9oli ' + emojify(message) + ' ....<br> Ena Chouwa Yelzmni N9oul ?' + '</p></li>').appendTo($('.messages ul'));
 			$("#text_input").addClass("to_understand");	
 			$("#storage").attr('info' , message);
 			scrolldown();
@@ -892,6 +996,37 @@ $(window).on('keydown', function(e) {
   
   
 });
+
+
+$(document).ready(function() {
+    checkSize();
+    $(window).resize(checkSize);
+});
+
+
+
+
+
+
+
+
+
+function checkSize(){
+
+    if ($(window).width() < 740){
+     
+					$("#contacts").hide();	
+					
+	}
+
+    if ($(window).width() > 740){
+     
+					$("#contacts").show();	
+					
+	}
+}
+
+
 
 </script>
 </body></html>
