@@ -752,10 +752,7 @@ function emojify (text) {
 
 
 function scrolldown() {
-   var div = $(".messages");
-   $(".messages").animate({
-      scrollTop: div.scrollHeight - div.clientHeight
-   }, 500);
+$(".messages").animate({ scrollTop: 100000 }, "fast");
 }
 
 
