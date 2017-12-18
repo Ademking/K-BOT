@@ -829,7 +829,7 @@ $(window).on('keydown', function(e) {
 	$(".messages").animate({ scrollTop: $(document).height() }, "fast");
 	
 	
-	var jqxhr = $.getJSON( "http://facetounsi.fun/chatbot/respond.php?text=" + message, function( data ) {
+	var jqxhr = $.getJSON( "https://facetounsi.fun/chatbot/respond.php?text=" + message, function( data ) {
 	console.log(data);
 	if (  typeof data.redirect_to_blocks === 'undefined') { //bot understand 
 			var bot_respond = data.messages[0].text;
@@ -872,7 +872,7 @@ $(window).on('keydown', function(e) {
   
  if (e.which == 13 && $("#text_input").hasClass("to_understand") === true) {
 				message2 = $(".message-input input").val();
-			 var jqxhr2 = $.getJSON( "http://facetounsi.fun/chatbot/learn.php?text=" + $("#storage").attr("info")  + "&means=" + message2 , function( data ) {
+			 var jqxhr2 = $.getJSON( "https://facetounsi.fun/chatbot/learn.php?text=" + $("#storage").attr("info")  + "&means=" + message2 , function( data ) {
 									
 								$('<li class="replies"><img src="http://uploads.webflow.com/565d5a0cdee07e0131e751d2/565d5a0d6555090131ce1561_botan_logo.png" alt="" /><p>' + 'Ok Fhmtk ... ' + emojify($("#storage").attr("info")) + ' M3neha ' +  emojify(message2)  + '</p></li>').appendTo($('.messages ul'));
 								$(".messages").animate({ scrollTop: $(document).height() }, "fast");
