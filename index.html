@@ -793,11 +793,11 @@ function newMessage() {
   if ($("#text_input").hasClass("to_understand") === false) {
 	
 	
-	message = $(".message-input input").val();
+			message = $(".message-input input").val();
 	if($.trim(message) == '') {
 		return false;
 	}
-	$('<li class="sent"><img src="userbot.png" alt="" /><p>' + emojify(striphtml(message)) + '</p></li>').appendTo($('.messages ul'));
+	$('<li class="sent"><img src="userbot.png" alt="" /><p>' + emojify(bot_respond(message)) + '</p></li>').appendTo($('.messages ul'));
 	$('.message-input input').val(null);
 	$('.contact.active .preview').html('<span>You: </span>' + message);
 	scrolldown();
@@ -813,7 +813,7 @@ function newMessage() {
 	else {
 		//bot don't understand ..
 		console.log("I don't understand");
-			$('<li class="replies"><img src="userbot.png" alt="" /><p>' + 'Ma Fhmtkch ... Kif T9oli ' + emojify(striphtml(message)) + ' ....<br> Ena Chouwa Yelzmni N9oul ?' + '</p></li>').appendTo($('.messages ul'));
+			$('<li class="replies"><img src="bot.png" alt="" /><p>' + 'Ma Fhmtkch ... Kif T9oli ' + emojify(striphtml(message)) + ' ....<br> Ena Chouwa Yelzmni N9oul ?' + '</p></li>').appendTo($('.messages ul'));
 			$("#text_input").addClass("to_understand");	
 			$("#storage").attr('info' , message);
 			scrolldown();
@@ -845,10 +845,11 @@ function newMessage() {
   }
   
  if ($("#text_input").hasClass("to_understand") === true) {
-				message2 = $(".message-input input").val();
+				
+			 	message2 = $(".message-input input").val();
 			 var jqxhr2 = $.getJSON( "https://facetounsi.fun/chatbot/learn.php?text=" + $("#storage").attr("info")  + "&means=" + message2 , function( data ) {
 									
-								$('<li class="sent"><img src="userbot.png" alt="" /><p>' +  emojify(striphtml(message2))  + '</p></li>').appendTo($('.messages ul'));
+								$('<li class="sent"><img src="userbot.png" alt="" /><p>' +  emojify(message2)  + '</p></li>').appendTo($('.messages ul'));
 								$('<li class="replies"><img src="bot.png" alt="" /><p>' + 'Ok Fhmtk ... ' + emojify(striphtml($("#storage").attr("info"))) + ' M3neha ' +  emojify(striphtml(message2))  + '</p></li>').appendTo($('.messages ul'));
 								scrolldown();
 
@@ -866,10 +867,19 @@ function newMessage() {
 				console.log( "error" );
 			  });
 				
-			
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				
 				return false;
-			 
 
  
  } 
