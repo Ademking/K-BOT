@@ -797,7 +797,7 @@ function newMessage() {
 	if($.trim(message) == '') {
 		return false;
 	}
-	$('<li class="sent"><img src="userbot.png" alt="" /><p>' + emojify(bot_respond(message)) + '</p></li>').appendTo($('.messages ul'));
+	$('<li class="sent"><img src="userbot.png" alt="" /><p>' + emojify(striphtml(message)) + '</p></li>').appendTo($('.messages ul'));
 	$('.message-input input').val(null);
 	$('.contact.active .preview').html('<span>You: </span>' + message);
 	scrolldown();
@@ -915,7 +915,7 @@ $(window).on('keydown', function(e) {
 	if($.trim(message) == '') {
 		return false;
 	}
-	$('<li class="sent"><img src="userbot.png" alt="" /><p>' + emojify(bot_respond(message)) + '</p></li>').appendTo($('.messages ul'));
+	$('<li class="sent"><img src="userbot.png" alt="" /><p>' + emojify(striphtml(message)) + '</p></li>').appendTo($('.messages ul'));
 	$('.message-input input').val(null);
 	$('.contact.active .preview').html('<span>You: </span>' + message);
 	scrolldown();
