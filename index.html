@@ -778,7 +778,10 @@ $(".messages").animate({ scrollTop: 100000 }, "fast");
 }
 
 
-
+function striphtml(str){
+	var str2 = str.replace(/(<([^>]+)>)/ig,"");
+	return str2;
+}
 
 
 
@@ -794,7 +797,7 @@ function newMessage() {
 	if($.trim(message) == '') {
 		return false;
 	}
-	$('<li class="sent"><img src="userbot.png" alt="" /><p>' + emojify(message) + '</p></li>').appendTo($('.messages ul'));
+	$('<li class="sent"><img src="userbot.png" alt="" /><p>' + emojify(striphtml(message)) + '</p></li>').appendTo($('.messages ul'));
 	$('.message-input input').val(null);
 	$('.contact.active .preview').html('<span>You: </span>' + message);
 	scrolldown();
@@ -804,13 +807,13 @@ function newMessage() {
 	console.log(data);
 	if (  typeof data.redirect_to_blocks === 'undefined') { //bot understand 
 			var bot_respond = data.messages[0].text;
-			$('<li class="replies"><img src="bot.png" alt="" /><p>' + emojify(bot_respond) + '</p></li>').appendTo($('.messages ul'));
+			$('<li class="replies"><img src="bot.png" alt="" /><p>' + emojify(striphtml(bot_respond)) + '</p></li>').appendTo($('.messages ul'));
 			scrolldown();
 	}
 	else {
 		//bot don't understand ..
 		console.log("I don't understand");
-			$('<li class="replies"><img src="userbot.png" alt="" /><p>' + 'Ma Fhmtkch ... Kif T9oli ' + emojify(message) + ' ....<br> Ena Chouwa Yelzmni N9oul ?' + '</p></li>').appendTo($('.messages ul'));
+			$('<li class="replies"><img src="userbot.png" alt="" /><p>' + 'Ma Fhmtkch ... Kif T9oli ' + emojify(striphtml(message)) + ' ....<br> Ena Chouwa Yelzmni N9oul ?' + '</p></li>').appendTo($('.messages ul'));
 			$("#text_input").addClass("to_understand");	
 			$("#storage").attr('info' , message);
 			scrolldown();
@@ -845,8 +848,8 @@ function newMessage() {
 				message2 = $(".message-input input").val();
 			 var jqxhr2 = $.getJSON( "https://facetounsi.fun/chatbot/learn.php?text=" + $("#storage").attr("info")  + "&means=" + message2 , function( data ) {
 									
-								$('<li class="sent"><img src="userbot.png" alt="" /><p>' +  emojify(message2)  + '</p></li>').appendTo($('.messages ul'));
-								$('<li class="replies"><img src="bot.png" alt="" /><p>' + 'Ok Fhmtk ... ' + emojify($("#storage").attr("info")) + ' M3neha ' +  emojify(message2)  + '</p></li>').appendTo($('.messages ul'));
+								$('<li class="sent"><img src="userbot.png" alt="" /><p>' +  emojify(striphtml(message2))  + '</p></li>').appendTo($('.messages ul'));
+								$('<li class="replies"><img src="bot.png" alt="" /><p>' + 'Ok Fhmtk ... ' + emojify(striphtml($("#storage").attr("info"))) + ' M3neha ' +  emojify(striphtml(message2))  + '</p></li>').appendTo($('.messages ul'));
 								scrolldown();
 
 								$("#text_input").removeClass("to_understand");	
@@ -902,7 +905,7 @@ $(window).on('keydown', function(e) {
 	if($.trim(message) == '') {
 		return false;
 	}
-	$('<li class="sent"><img src="userbot.png" alt="" /><p>' + emojify(message) + '</p></li>').appendTo($('.messages ul'));
+	$('<li class="sent"><img src="userbot.png" alt="" /><p>' + emojify(bot_respond(message)) + '</p></li>').appendTo($('.messages ul'));
 	$('.message-input input').val(null);
 	$('.contact.active .preview').html('<span>You: </span>' + message);
 	scrolldown();
@@ -912,13 +915,13 @@ $(window).on('keydown', function(e) {
 	console.log(data);
 	if (  typeof data.redirect_to_blocks === 'undefined') { //bot understand 
 			var bot_respond = data.messages[0].text;
-			$('<li class="replies"><img src="bot.png" alt="" /><p>' + emojify(bot_respond) + '</p></li>').appendTo($('.messages ul'));
+			$('<li class="replies"><img src="bot.png" alt="" /><p>' + emojify(striphtml(bot_respond)) + '</p></li>').appendTo($('.messages ul'));
 			scrolldown();
 	}
 	else {
 		//bot don't understand ..
 		console.log("I don't understand");
-			$('<li class="replies"><img src="bot.png" alt="" /><p>' + 'Ma Fhmtkch ... Kif T9oli ' + emojify(message) + ' ....<br> Ena Chouwa Yelzmni N9oul ?' + '</p></li>').appendTo($('.messages ul'));
+			$('<li class="replies"><img src="bot.png" alt="" /><p>' + 'Ma Fhmtkch ... Kif T9oli ' + emojify(striphtml(message)) + ' ....<br> Ena Chouwa Yelzmni N9oul ?' + '</p></li>').appendTo($('.messages ul'));
 			$("#text_input").addClass("to_understand");	
 			$("#storage").attr('info' , message);
 			scrolldown();
@@ -954,7 +957,7 @@ $(window).on('keydown', function(e) {
 			 var jqxhr2 = $.getJSON( "https://facetounsi.fun/chatbot/learn.php?text=" + $("#storage").attr("info")  + "&means=" + message2 , function( data ) {
 									
 								$('<li class="sent"><img src="userbot.png" alt="" /><p>' +  emojify(message2)  + '</p></li>').appendTo($('.messages ul'));
-								$('<li class="replies"><img src="bot.png" alt="" /><p>' + 'Ok Fhmtk ... ' + emojify($("#storage").attr("info")) + ' M3neha ' +  emojify(message2)  + '</p></li>').appendTo($('.messages ul'));
+								$('<li class="replies"><img src="bot.png" alt="" /><p>' + 'Ok Fhmtk ... ' + emojify(striphtml($("#storage").attr("info"))) + ' M3neha ' +  emojify(striphtml(message2))  + '</p></li>').appendTo($('.messages ul'));
 								scrolldown();
 
 								$("#text_input").removeClass("to_understand");	
